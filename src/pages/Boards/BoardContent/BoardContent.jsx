@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import ListColumns from './ListColumns/ListColumns';
 import * as React from 'react';
 import { mapOrder } from '~/utils/sort';
-import { DndContext,
+import {
     PointerSensor,
     DndContext,
     MouseSensor,
