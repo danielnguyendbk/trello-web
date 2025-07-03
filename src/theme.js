@@ -1,89 +1,106 @@
-import { createTheme } from '@mui/material/styles';
-import {experimental_extendTheme as extendTheme} from '@mui/material/styles';
-import { deepOrange, red,orange,cyan,teal } from '@mui/material/colors';
-import { BorderColor } from '@mui/icons-material';
+import { createTheme } from '@mui/material/styles'
+import { deepOrange, red, orange, cyan, teal } from '@mui/material/colors'
 
-// Create a theme instance.
+const APP_BAR_HEIGHT = '52px'
+const BOARD_BAR_HEIGHT = '58px'
+const BOARD_CONTENT_HEIGHT = `calc(100vh - ${APP_BAR_HEIGHT} - ${BOARD_BAR_HEIGHT})`
+const COLUMN_HEADER_HEIGHT = '50px'
+const COLUMN_FOOTER_HEIGHT = '56px'
+
 const theme = createTheme({
     trelloCustom: {
-        appBarHeight: '52px',
-        boardBarHeight: '58px'
+        appBarHeight: APP_BAR_HEIGHT,
+        boardBarHeight: BOARD_BAR_HEIGHT,
+        boardContentHeight: BOARD_CONTENT_HEIGHT,
+        columnHeaderHeight: COLUMN_HEADER_HEIGHT,
+        columnFooterHeight: COLUMN_FOOTER_HEIGHT
     },
+
     colorSchemes: {
         light: {
             palette: {
-                primary:teal,
-                secondary: deepOrange
-            },
+                // primary: teal,
+                // secondary: deepOrange
+            }
         },
         dark: {
             palette: {
-                primary: cyan,
-                secondary: orange
-            },
-        },
-    }, 
+                // primary: cyan,
+                // secondary: orange
+            }
+        }
+    },
+
     components: {
-        // Name of the component
-        MuiButton: {
+        // ✅ Custom Scrollbar
+        MuiCssBaseline: {
             styleOverrides: {
-                // Name of the slot
-                root: {
-                    // Some CSS
-                    textTransform : 'none'
-                },
-            },
-        },
-        MuiInputLabel: {
-            styleOverrides: {
-                // Name of the slot
-                root: ({theme}) => ({
-                    color: theme.palette.primary.main,
-                    fontSize: '0.875rem'
-                }),
-            },
-        },
-        components: {
-            MuiCssBaseline: {
-                styleOverrides: {
                     body: {
-                        '*:: -webkit - scrollbar': {
+                        '*::-webkit-scrollbar': {
                             width: '8px',
                             height: '8px'
                         },
-                        '*:: -webkit - scrollbar - thumb': {
-                            backgroundColor: '#bd3c7',
+                        '*::-webkit-scrollbar-thumb': {
+                            backgroundColor: '#ccc',
                             borderRadius: '8px'
                         },
-                        '*:: -webkit - scrollbar - thumb::hover': {
-                            backgroundColor: '#00b894'
+                        '*::-webkit-scrollbar-thumb:hover': {
+                            backgroundColor: '#aaa'
                         }
                     }
-                    
-
-                },
-            },
+            }
         },
-        
+
+        // ✅ Button
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none',
+                    borderWidth: '0.5px',
+                    '&:hover': { borderWidth: '0.5px' }
+                }
+            }
+        },
+
+        // ✅ Typography
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    '&.MuiTypography-body1': {
+                        fontSize: '0.875rem'
+                    }
+                }
+            }
+        },
+
+        // ✅ InputLabel
+        MuiInputLabel: {
+            styleOverrides: {
+                root: ({ theme }) => ({
+                    color: theme.palette.primary.main,
+                    fontSize: '0.875rem'
+                })
+            }
+        },
+
+        // ✅ OutlinedInput
         MuiOutlinedInput: {
             styleOverrides: {
-                // Name of the slot
-                root: ({theme}) => ({
-                    color: theme.palette.primary.main,
-                    fontSize:'0.875rem',
-                    '.MuiOutlinedInput-notchedOutline': { borderColor: theme.palette.light },
-                    '&:hover': {
-                        '.MuiOutlinedInput-notchedOutline': {
-                            borderColor:theme.palette.primary.main
-                        }
+                root: ({ theme }) => ({
+                    fontSize: '0.875rem',
+                    '& fieldset': {
+                        borderWidth: '0.5px !important'
                     },
-                    '& fieldset' : {
+                    '&:hover fieldset': {
+                        borderWidth: '1px !important'
+                    },
+                    '&.Mui-focused fieldset': {
                         borderWidth: '1px !important'
                     }
-                }),
-            },
-        },
-      },
-});
+                })
+            }
+        }
+    }
+})
 
-export default theme;
+export default theme
