@@ -9,6 +9,7 @@ function ListColumns({columns}) {
   return (
     // SortableContext yêu cầu item là mảng dạng {'id-1,id-2'} chứ ko phải {id: id-1,id: id-2}
     // nếu ko đúng thì vẫn kéo thả được nhưng không có animation
+    
       <SortableContext items={columns?.map(c => c._id)} strategy={horizontalListSortingStrategy}>
           <Box sx={{
               bgcolor: 'inherit',
