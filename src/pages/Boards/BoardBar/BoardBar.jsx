@@ -38,12 +38,10 @@ function BoardBar ({board}) {
             height: (theme) => theme.trelloCustom.boardBarHeight,
             display: 'flex',
             alignItems: 'center',
-            gap: 2,
             overflowX: 'auto',
             overflowY: 'hidden',
             borderBottom: '1px solid white',
             paddingX : 2,
-            alignItems: 'center',
             justifyContent: 'space-between',
             bgcolor : (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
             '&::-webkit-scrollbar-track': {

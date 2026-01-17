@@ -5,6 +5,7 @@ import BoardContent from '~/pages/Boards/BoardContent/BoardContent';
 // import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { fetchBoardDetails } from '~/apis';
+import { mockData } from '~/apis/mock-data';
 
 function Board() {
     // const { boardId } = useParams();
@@ -12,14 +13,17 @@ function Board() {
     const [board, setBoard] = useState(null);
 
     useEffect(() => {
-        // Gọi API khi component mount hoặc boardId thay đổi
-        fetchBoardDetails(boardId)
-            .then(res => {
-                setBoard(res.board);
-            })
-            .catch(error => {
-                console.error('Error fetching board details:', error);
-            });
+        // Use mockData instead of API call
+        setBoard(mockData.board);
+        
+        // Uncomment below to use API instead:
+        // fetchBoardDetails(boardId)
+        //     .then(res => {
+        //         setBoard(res.board);
+        //     })
+        //     .catch(error => {
+        //         console.error('Error fetching board details:', error);
+        //     });
     }, [boardId]);
     console.log('board', board);
 

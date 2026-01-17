@@ -30,7 +30,7 @@ function AppBar() {
             display: 'flex',
             alignItems: 'center',
             justifyContent:'space-between',
-            gap: 2,
+            p: 2,
             overflowX: 'auto',
             overflowY: 'hidden',
             bgcolor: (theme) => (theme.palette.mode == 'dark' ? '#2c3e50' : '#1565c0'),
@@ -38,7 +38,7 @@ function AppBar() {
                 m: 2
             },
             }}>
-            <Box sx={{display: 'flex',alignItems: 'center', gap: 2}}>
+            <Box sx={{display: 'flex',alignItems: 'center', p: 2}}>
                 <AppsIcon sx= {{color : 'white'}}/>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <SvgIcon component={TrelloIcon} inheritViewBox sx={{ color: 'white' }} />
